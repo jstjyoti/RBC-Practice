@@ -9,24 +9,14 @@ public class ArraywithMT implements Runnable
 	private int threadID;
 	
 	static double startTime=System.currentTimeMillis();
-	
-	
-	
-	
 	public int[][] getArr() {
 		return arr;
 	}
-	
-	
-	
 	public void setArr(int[][] arr) {
 		this.arr = arr;
 		
 		
 	}
-	
-	
-	
 	public int getProduct() {
 		return this.product;
 	}
@@ -39,9 +29,8 @@ public class ArraywithMT implements Runnable
 	public void setSum(int sum) {
 		this.sum = sum;
 	}
-
 	
-	 ArraywithMT (int [][] arr,int threadID)
+	ArraywithMT (int [][] arr,int threadID)
 	 {
 		 this.arr=arr;
 		 this.threadID=threadID;
@@ -50,31 +39,21 @@ public class ArraywithMT implements Runnable
 	@Override
 	public void run() 
 	{
-		
-		
-	arrayOperation1();
-	
-		
+		arrayOperation1();	
 	}
 	synchronized  public void arrayOperation1()
 	{
-	    int arrayCol = arr[0].length;
+	   
 	    this.product=1;
 	    int arrayRow = arr.length;
-	    int colStart = (int)((threadID%2) * (arrayCol/2));
 	    int rowStart = (int)((int)(threadID/2) * (arrayRow/2));
-	    int colEnd = colStart + (int)(arrayCol/2);
-// 	    int rowEnd = rowStart + (int)(arrayRow/2);
-
-	    for(int i = rowStart;i<=rowStart; i++)
+	    int i = rowStart;
+	    for(int j = 0;j < arr[i].length ; j++)
 	    {
-	        for(int j = 0;j < arr[i].length ; j++)
-	        {
-	            setProduct(getProduct()*arr[i][j]);
-	        
-	        }
-		System.out.println("Product of row" +rowStart+"is :"+this.getProduct());
+	    	setProduct(getProduct()*arr[i][j]);
 	    }
+	    System.out.println("Product of row" +rowStart+"is :"+this.getProduct());
+	    
 	}
 }
 
