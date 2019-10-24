@@ -66,9 +66,9 @@ public class ArraywithMT implements Runnable
 	    int colEnd = colStart + (int)(arrayCol/2);
 // 	    int rowEnd = rowStart + (int)(arrayRow/2);
 
-	    for(int i = rowStart;i<rowStart+1; i++)
+	    for(int i = rowStart;i<=rowStart; i++)
 	    {
-	        for(int j = colStart; j < colEnd; j++)
+	        for(int j = 0;j < arr[i].length ; j++)
 	        {
 	            setProduct(getProduct()*arr[i][j]);
 	        
