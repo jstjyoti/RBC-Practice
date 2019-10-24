@@ -28,7 +28,7 @@ public class ArraywithMT implements Runnable
 	
 	
 	public int getProduct() {
-		return product;
+		return this.product;
 	}
 	public void setProduct(int product) {
 		this.product = product;
@@ -58,24 +58,22 @@ public class ArraywithMT implements Runnable
 	}
 	synchronized  public void arrayOperation1()
 	{
-		
-		
-		
-		
-		int arrayCol = arr[0].length;
+	    int arrayCol = arr[0].length;
+	    this.product=1;
 	    int arrayRow = arr.length;
 	    int colStart = (int)((threadID%2) * (arrayCol/2));
 	    int rowStart = (int)((int)(threadID/2) * (arrayRow/2));
 	    int colEnd = colStart + (int)(arrayCol/2);
-	    int rowEnd = rowStart + (int)(arrayRow/2);
+// 	    int rowEnd = rowStart + (int)(arrayRow/2);
 
-	    for(int i = rowStart;i<rowEnd; i++)
+	    for(int i = rowStart;i<rowStart+1; i++)
 	    {
 	        for(int j = colStart; j < colEnd; j++)
 	        {
 	            setProduct(getProduct()*arr[i][j]);
 	        
 	        }
+		System.out.println("Product of row" +rowStart+"is :"+this.getProduct());
 	    }
 	}
 }
